@@ -29,308 +29,350 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.gridView = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabView = new System.Windows.Forms.TabPage();
-            this.lblPurge = new System.Windows.Forms.Label();
-            this.btnPurge = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.cmbFilter = new System.Windows.Forms.ComboBox();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.tabAdd = new System.Windows.Forms.TabPage();
-            this.txtRemarks = new System.Windows.Forms.TextBox();
-            this.dtpDateFiled = new System.Windows.Forms.DateTimePicker();
-            this.lblCCE = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.txtCCE = new System.Windows.Forms.TextBox();
-            this.txtType = new System.Windows.Forms.TextBox();
-            this.lblRemarks = new System.Windows.Forms.Label();
-            this.lblDateFiled = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabView.SuspendLayout();
-            this.tabAdd.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            gridView = new System.Windows.Forms.DataGridView();
+            btnAdd = new System.Windows.Forms.Button();
+            tabControl1 = new System.Windows.Forms.TabControl();
+            tabView = new System.Windows.Forms.TabPage();
+            lblPurge = new System.Windows.Forms.Label();
+            btnPurge = new System.Windows.Forms.Button();
+            btnRefresh = new System.Windows.Forms.Button();
+            btnSearch = new System.Windows.Forms.Button();
+            cmbFilter = new System.Windows.Forms.ComboBox();
+            lblSearch = new System.Windows.Forms.Label();
+            txtSearch = new System.Windows.Forms.TextBox();
+            tabAdd = new System.Windows.Forms.TabPage();
+            panel1 = new System.Windows.Forms.Panel();
+            txtRemarks = new System.Windows.Forms.TextBox();
+            lblRemarks = new System.Windows.Forms.Label();
+            lblName = new System.Windows.Forms.Label();
+            dtpDateFiled = new System.Windows.Forms.DateTimePicker();
+            txtName = new System.Windows.Forms.TextBox();
+            lblDateFiled = new System.Windows.Forms.Label();
+            lblCCE = new System.Windows.Forms.Label();
+            txtCCE = new System.Windows.Forms.TextBox();
+            lblType = new System.Windows.Forms.Label();
+            txtType = new System.Windows.Forms.TextBox();
+            lblRefresh = new System.Windows.Forms.Label();
+            lblSearch2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)gridView).BeginInit();
+            tabControl1.SuspendLayout();
+            tabView.SuspendLayout();
+            tabAdd.SuspendLayout();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // gridView
             // 
-            this.gridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridView.Location = new System.Drawing.Point(0, 78);
-            this.gridView.Name = "gridView";
-            this.gridView.Size = new System.Drawing.Size(1253, 558);
-            this.gridView.TabIndex = 0;
+            gridView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridView.Location = new System.Drawing.Point(0, 90);
+            gridView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            gridView.Name = "gridView";
+            gridView.Size = new System.Drawing.Size(1462, 644);
+            gridView.TabIndex = 0;
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(590, 311);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(65, 63);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "✔";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnAdd.Location = new System.Drawing.Point(688, 359);
+            btnAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new System.Drawing.Size(76, 73);
+            btnAdd.TabIndex = 1;
+            btnAdd.Text = "✔";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabView);
-            this.tabControl1.Controls.Add(this.tabAdd);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1264, 681);
-            this.tabControl1.TabIndex = 2;
+            tabControl1.Controls.Add(tabView);
+            tabControl1.Controls.Add(tabAdd);
+            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tabControl1.Location = new System.Drawing.Point(0, 0);
+            tabControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new System.Drawing.Size(1475, 786);
+            tabControl1.TabIndex = 2;
             // 
             // tabView
             // 
-            this.tabView.Controls.Add(this.lblPurge);
-            this.tabView.Controls.Add(this.btnPurge);
-            this.tabView.Controls.Add(this.btnRefresh);
-            this.tabView.Controls.Add(this.btnSearch);
-            this.tabView.Controls.Add(this.cmbFilter);
-            this.tabView.Controls.Add(this.lblSearch);
-            this.tabView.Controls.Add(this.txtSearch);
-            this.tabView.Controls.Add(this.gridView);
-            this.tabView.Location = new System.Drawing.Point(4, 38);
-            this.tabView.Name = "tabView";
-            this.tabView.Padding = new System.Windows.Forms.Padding(3);
-            this.tabView.Size = new System.Drawing.Size(1256, 639);
-            this.tabView.TabIndex = 0;
-            this.tabView.Text = "View";
-            this.tabView.UseVisualStyleBackColor = true;
+            tabView.Controls.Add(lblPurge);
+            tabView.Controls.Add(btnPurge);
+            tabView.Controls.Add(btnRefresh);
+            tabView.Controls.Add(btnSearch);
+            tabView.Controls.Add(cmbFilter);
+            tabView.Controls.Add(lblSearch2);
+            tabView.Controls.Add(lblRefresh);
+            tabView.Controls.Add(lblSearch);
+            tabView.Controls.Add(txtSearch);
+            tabView.Controls.Add(gridView);
+            tabView.Location = new System.Drawing.Point(4, 38);
+            tabView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabView.Name = "tabView";
+            tabView.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabView.Size = new System.Drawing.Size(1467, 744);
+            tabView.TabIndex = 0;
+            tabView.Text = "View";
+            tabView.UseVisualStyleBackColor = true;
             // 
             // lblPurge
             // 
-            this.lblPurge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPurge.AutoSize = true;
-            this.lblPurge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPurge.Location = new System.Drawing.Point(1197, 55);
-            this.lblPurge.Name = "lblPurge";
-            this.lblPurge.Size = new System.Drawing.Size(51, 20);
-            this.lblPurge.TabIndex = 6;
-            this.lblPurge.Text = "Purge";
+            lblPurge.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            lblPurge.AutoSize = true;
+            lblPurge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblPurge.Location = new System.Drawing.Point(1396, 63);
+            lblPurge.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblPurge.Name = "lblPurge";
+            lblPurge.Size = new System.Drawing.Size(51, 20);
+            lblPurge.TabIndex = 6;
+            lblPurge.Text = "Purge";
             // 
             // btnPurge
             // 
-            this.btnPurge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPurge.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPurge.BackgroundImage")));
-            this.btnPurge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPurge.Location = new System.Drawing.Point(1198, 6);
-            this.btnPurge.Name = "btnPurge";
-            this.btnPurge.Size = new System.Drawing.Size(50, 47);
-            this.btnPurge.TabIndex = 5;
-            this.btnPurge.UseVisualStyleBackColor = true;
-            this.btnPurge.Click += new System.EventHandler(this.btnPurge_Click);
+            btnPurge.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnPurge.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnPurge.BackgroundImage");
+            btnPurge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            btnPurge.Location = new System.Drawing.Point(1398, 7);
+            btnPurge.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnPurge.Name = "btnPurge";
+            btnPurge.Size = new System.Drawing.Size(58, 54);
+            btnPurge.TabIndex = 5;
+            btnPurge.UseVisualStyleBackColor = true;
+            btnPurge.Click += btnPurge_Click;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.BackgroundImage")));
-            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRefresh.Location = new System.Drawing.Point(538, 24);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(50, 47);
-            this.btnRefresh.TabIndex = 4;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            btnRefresh.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnRefresh.BackgroundImage");
+            btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            btnRefresh.Location = new System.Drawing.Point(628, 28);
+            btnRefresh.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new System.Drawing.Size(58, 54);
+            btnRefresh.TabIndex = 4;
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSearch.Location = new System.Drawing.Point(482, 24);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(50, 47);
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            btnSearch.BackColor = System.Drawing.Color.Transparent;
+            btnSearch.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnSearch.BackgroundImage");
+            btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            btnSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            btnSearch.Location = new System.Drawing.Point(562, 28);
+            btnSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new System.Drawing.Size(58, 54);
+            btnSearch.TabIndex = 4;
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // cmbFilter
             // 
-            this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Items.AddRange(new object[] {
-            "All",
-            "Name",
-            "Type",
-            "CCE",
-            "Remarks"});
-            this.cmbFilter.Location = new System.Drawing.Point(281, 35);
-            this.cmbFilter.Name = "cmbFilter";
-            this.cmbFilter.Size = new System.Drawing.Size(183, 37);
-            this.cmbFilter.TabIndex = 3;
+            cmbFilter.FormattingEnabled = true;
+            cmbFilter.Items.AddRange(new object[] { "All", "Name", "Type", "CCE", "Remarks" });
+            cmbFilter.Location = new System.Drawing.Point(328, 40);
+            cmbFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cmbFilter.Name = "cmbFilter";
+            cmbFilter.Size = new System.Drawing.Size(213, 37);
+            cmbFilter.TabIndex = 3;
             // 
             // lblSearch
             // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(6, 5);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(89, 29);
-            this.lblSearch.TabIndex = 2;
-            this.lblSearch.Text = "Search";
+            lblSearch.AutoSize = true;
+            lblSearch.Location = new System.Drawing.Point(7, 6);
+            lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new System.Drawing.Size(89, 29);
+            lblSearch.TabIndex = 2;
+            lblSearch.Text = "Search";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(6, 37);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(257, 35);
-            this.txtSearch.TabIndex = 1;
+            txtSearch.Location = new System.Drawing.Point(7, 43);
+            txtSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new System.Drawing.Size(299, 35);
+            txtSearch.TabIndex = 1;
             // 
             // tabAdd
             // 
-            this.tabAdd.AutoScrollMargin = new System.Drawing.Size(0, 500);
-            this.tabAdd.Controls.Add(this.panel1);
-            this.tabAdd.Location = new System.Drawing.Point(4, 38);
-            this.tabAdd.Name = "tabAdd";
-            this.tabAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdd.Size = new System.Drawing.Size(1256, 639);
-            this.tabAdd.TabIndex = 1;
-            this.tabAdd.Text = "Add";
-            this.tabAdd.UseVisualStyleBackColor = true;
-            // 
-            // txtRemarks
-            // 
-            this.txtRemarks.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtRemarks.Location = new System.Drawing.Point(583, 226);
-            this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(635, 35);
-            this.txtRemarks.TabIndex = 7;
-            // 
-            // dtpDateFiled
-            // 
-            this.dtpDateFiled.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.dtpDateFiled.Location = new System.Drawing.Point(30, 226);
-            this.dtpDateFiled.Name = "dtpDateFiled";
-            this.dtpDateFiled.Size = new System.Drawing.Size(430, 35);
-            this.dtpDateFiled.TabIndex = 6;
-            // 
-            // lblCCE
-            // 
-            this.lblCCE.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblCCE.AutoSize = true;
-            this.lblCCE.Location = new System.Drawing.Point(840, 37);
-            this.lblCCE.Name = "lblCCE";
-            this.lblCCE.Size = new System.Drawing.Size(156, 29);
-            this.lblCCE.TabIndex = 5;
-            this.lblCCE.Text = "CCE Number";
-            // 
-            // lblType
-            // 
-            this.lblType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(431, 37);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(181, 29);
-            this.lblType.TabIndex = 5;
-            this.lblType.Text = "Type of Petition";
-            // 
-            // txtCCE
-            // 
-            this.txtCCE.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtCCE.Location = new System.Drawing.Point(845, 69);
-            this.txtCCE.Name = "txtCCE";
-            this.txtCCE.Size = new System.Drawing.Size(347, 35);
-            this.txtCCE.TabIndex = 4;
-            // 
-            // txtType
-            // 
-            this.txtType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtType.Location = new System.Drawing.Point(436, 69);
-            this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(347, 35);
-            this.txtType.TabIndex = 4;
-            // 
-            // lblRemarks
-            // 
-            this.lblRemarks.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblRemarks.AutoSize = true;
-            this.lblRemarks.Location = new System.Drawing.Point(578, 194);
-            this.lblRemarks.Name = "lblRemarks";
-            this.lblRemarks.Size = new System.Drawing.Size(109, 29);
-            this.lblRemarks.TabIndex = 3;
-            this.lblRemarks.Text = "Remarks";
-            // 
-            // lblDateFiled
-            // 
-            this.lblDateFiled.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblDateFiled.AutoSize = true;
-            this.lblDateFiled.Location = new System.Drawing.Point(25, 194);
-            this.lblDateFiled.Name = "lblDateFiled";
-            this.lblDateFiled.Size = new System.Drawing.Size(124, 29);
-            this.lblDateFiled.TabIndex = 3;
-            this.lblDateFiled.Text = "Date Filed";
-            // 
-            // lblName
-            // 
-            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(25, 37);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(213, 29);
-            this.lblName.TabIndex = 3;
-            this.lblName.Text = "Name of Petitioner";
-            // 
-            // txtName
-            // 
-            this.txtName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtName.Location = new System.Drawing.Point(30, 69);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(347, 35);
-            this.txtName.TabIndex = 2;
+            tabAdd.AutoScrollMargin = new System.Drawing.Size(0, 500);
+            tabAdd.Controls.Add(panel1);
+            tabAdd.Location = new System.Drawing.Point(4, 38);
+            tabAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabAdd.Name = "tabAdd";
+            tabAdd.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabAdd.Size = new System.Drawing.Size(1467, 744);
+            tabAdd.TabIndex = 1;
+            tabAdd.Text = "Add";
+            tabAdd.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Controls.Add(this.txtRemarks);
-            this.panel1.Controls.Add(this.lblRemarks);
-            this.panel1.Controls.Add(this.lblName);
-            this.panel1.Controls.Add(this.dtpDateFiled);
-            this.panel1.Controls.Add(this.txtName);
-            this.panel1.Controls.Add(this.lblDateFiled);
-            this.panel1.Controls.Add(this.lblCCE);
-            this.panel1.Controls.Add(this.txtCCE);
-            this.panel1.Controls.Add(this.lblType);
-            this.panel1.Controls.Add(this.txtType);
-            this.panel1.Location = new System.Drawing.Point(8, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1242, 403);
-            this.panel1.TabIndex = 8;
+            panel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(btnAdd);
+            panel1.Controls.Add(txtRemarks);
+            panel1.Controls.Add(lblRemarks);
+            panel1.Controls.Add(lblName);
+            panel1.Controls.Add(dtpDateFiled);
+            panel1.Controls.Add(txtName);
+            panel1.Controls.Add(lblDateFiled);
+            panel1.Controls.Add(lblCCE);
+            panel1.Controls.Add(txtCCE);
+            panel1.Controls.Add(lblType);
+            panel1.Controls.Add(txtType);
+            panel1.Location = new System.Drawing.Point(9, 7);
+            panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(1449, 465);
+            panel1.TabIndex = 8;
+            // 
+            // txtRemarks
+            // 
+            txtRemarks.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            txtRemarks.Location = new System.Drawing.Point(680, 261);
+            txtRemarks.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtRemarks.Name = "txtRemarks";
+            txtRemarks.Size = new System.Drawing.Size(740, 35);
+            txtRemarks.TabIndex = 7;
+            // 
+            // lblRemarks
+            // 
+            lblRemarks.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            lblRemarks.AutoSize = true;
+            lblRemarks.Location = new System.Drawing.Point(674, 224);
+            lblRemarks.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblRemarks.Name = "lblRemarks";
+            lblRemarks.Size = new System.Drawing.Size(109, 29);
+            lblRemarks.TabIndex = 3;
+            lblRemarks.Text = "Remarks";
+            // 
+            // lblName
+            // 
+            lblName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            lblName.AutoSize = true;
+            lblName.Location = new System.Drawing.Point(29, 43);
+            lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblName.Name = "lblName";
+            lblName.Size = new System.Drawing.Size(213, 29);
+            lblName.TabIndex = 3;
+            lblName.Text = "Name of Petitioner";
+            // 
+            // dtpDateFiled
+            // 
+            dtpDateFiled.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            dtpDateFiled.Location = new System.Drawing.Point(35, 261);
+            dtpDateFiled.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dtpDateFiled.Name = "dtpDateFiled";
+            dtpDateFiled.Size = new System.Drawing.Size(501, 35);
+            dtpDateFiled.TabIndex = 6;
+            // 
+            // txtName
+            // 
+            txtName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            txtName.Location = new System.Drawing.Point(35, 80);
+            txtName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtName.Name = "txtName";
+            txtName.Size = new System.Drawing.Size(404, 35);
+            txtName.TabIndex = 2;
+            // 
+            // lblDateFiled
+            // 
+            lblDateFiled.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            lblDateFiled.AutoSize = true;
+            lblDateFiled.Location = new System.Drawing.Point(29, 224);
+            lblDateFiled.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblDateFiled.Name = "lblDateFiled";
+            lblDateFiled.Size = new System.Drawing.Size(124, 29);
+            lblDateFiled.TabIndex = 3;
+            lblDateFiled.Text = "Date Filed";
+            // 
+            // lblCCE
+            // 
+            lblCCE.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            lblCCE.AutoSize = true;
+            lblCCE.Location = new System.Drawing.Point(980, 43);
+            lblCCE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblCCE.Name = "lblCCE";
+            lblCCE.Size = new System.Drawing.Size(156, 29);
+            lblCCE.TabIndex = 5;
+            lblCCE.Text = "CCE Number";
+            // 
+            // txtCCE
+            // 
+            txtCCE.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            txtCCE.Location = new System.Drawing.Point(986, 80);
+            txtCCE.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtCCE.Name = "txtCCE";
+            txtCCE.Size = new System.Drawing.Size(404, 35);
+            txtCCE.TabIndex = 4;
+            // 
+            // lblType
+            // 
+            lblType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            lblType.AutoSize = true;
+            lblType.Location = new System.Drawing.Point(503, 43);
+            lblType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblType.Name = "lblType";
+            lblType.Size = new System.Drawing.Size(181, 29);
+            lblType.TabIndex = 5;
+            lblType.Text = "Type of Petition";
+            // 
+            // txtType
+            // 
+            txtType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            txtType.Location = new System.Drawing.Point(509, 80);
+            txtType.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            txtType.Name = "txtType";
+            txtType.Size = new System.Drawing.Size(404, 35);
+            txtType.TabIndex = 4;
+            // 
+            // lblRefresh
+            // 
+            lblRefresh.AutoSize = true;
+            lblRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblRefresh.Location = new System.Drawing.Point(628, 7);
+            lblRefresh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblRefresh.Name = "lblRefresh";
+            lblRefresh.Size = new System.Drawing.Size(60, 18);
+            lblRefresh.TabIndex = 2;
+            lblRefresh.Text = "Refresh";
+            // 
+            // lblSearch2
+            // 
+            lblSearch2.AutoSize = true;
+            lblSearch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblSearch2.Location = new System.Drawing.Point(565, 7);
+            lblSearch2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblSearch2.Name = "lblSearch2";
+            lblSearch2.Size = new System.Drawing.Size(55, 18);
+            lblSearch2.TabIndex = 2;
+            lblSearch2.Text = "Search";
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.tabControl1);
-            this.Name = "Main";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Petition Log";
-            this.Load += new System.EventHandler(this.Main_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
-            this.tabControl1.ResumeLayout(false);
-            this.tabView.ResumeLayout(false);
-            this.tabView.PerformLayout();
-            this.tabAdd.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1475, 786);
+            Controls.Add(tabControl1);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "Main";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Petition Log";
+            Load += Main_Load;
+            ((System.ComponentModel.ISupportInitialize)gridView).EndInit();
+            tabControl1.ResumeLayout(false);
+            tabView.ResumeLayout(false);
+            tabView.PerformLayout();
+            tabAdd.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
 
         }
 
@@ -359,6 +401,8 @@
         private System.Windows.Forms.Button btnPurge;
         private System.Windows.Forms.Label lblPurge;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblSearch2;
+        private System.Windows.Forms.Label lblRefresh;
     }
 }
 
