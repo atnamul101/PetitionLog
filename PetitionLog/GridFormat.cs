@@ -27,9 +27,9 @@ namespace PetitionLog
             dgv.Columns["btnDelete"].FillWeight = 60;
 
             // Rename headers
-            if (dgv.Columns.Contains("Name")) dgv.Columns["Name"].HeaderText = "Name of Petitioner";
+            if (dgv.Columns.Contains("Name")) dgv.Columns["Name"].HeaderText = "Name of Petitioner/Filer";
             if (dgv.Columns.Contains("Type")) dgv.Columns["Type"].HeaderText = "Petition Type";
-            if (dgv.Columns.Contains("CCE")) dgv.Columns["CCE"].HeaderText = "CCE #";
+            if (dgv.Columns.Contains("CCE")) dgv.Columns["CCE"].HeaderText = "CCE Number";
             if (dgv.Columns.Contains("DateFiled")) dgv.Columns["DateFiled"].HeaderText = "Date Filed";
             if (dgv.Columns.Contains("DateAdded")) dgv.Columns["DateAdded"].HeaderText = "Date Added";
             if (dgv.Columns.Contains("Remarks")) dgv.Columns["Remarks"].HeaderText = "Remarks";
