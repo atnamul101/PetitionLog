@@ -38,6 +38,8 @@
             btnRefresh = new System.Windows.Forms.Button();
             btnSearch = new System.Windows.Forms.Button();
             cmbFilter = new System.Windows.Forms.ComboBox();
+            lblSearch2 = new System.Windows.Forms.Label();
+            lblRefresh = new System.Windows.Forms.Label();
             lblSearch = new System.Windows.Forms.Label();
             txtSearch = new System.Windows.Forms.TextBox();
             tabAdd = new System.Windows.Forms.TabPage();
@@ -52,8 +54,6 @@
             txtCCE = new System.Windows.Forms.TextBox();
             lblType = new System.Windows.Forms.Label();
             txtType = new System.Windows.Forms.TextBox();
-            lblRefresh = new System.Windows.Forms.Label();
-            lblSearch2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)gridView).BeginInit();
             tabControl1.SuspendLayout();
             tabView.SuspendLayout();
@@ -180,6 +180,28 @@
             cmbFilter.Size = new System.Drawing.Size(213, 37);
             cmbFilter.TabIndex = 3;
             // 
+            // lblSearch2
+            // 
+            lblSearch2.AutoSize = true;
+            lblSearch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblSearch2.Location = new System.Drawing.Point(565, 7);
+            lblSearch2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblSearch2.Name = "lblSearch2";
+            lblSearch2.Size = new System.Drawing.Size(55, 18);
+            lblSearch2.TabIndex = 2;
+            lblSearch2.Text = "Search";
+            // 
+            // lblRefresh
+            // 
+            lblRefresh.AutoSize = true;
+            lblRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblRefresh.Location = new System.Drawing.Point(628, 7);
+            lblRefresh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblRefresh.Name = "lblRefresh";
+            lblRefresh.Size = new System.Drawing.Size(60, 18);
+            lblRefresh.TabIndex = 2;
+            lblRefresh.Text = "Refresh";
+            // 
             // lblSearch
             // 
             lblSearch.AutoSize = true;
@@ -259,9 +281,9 @@
             lblName.Location = new System.Drawing.Point(29, 43);
             lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblName.Name = "lblName";
-            lblName.Size = new System.Drawing.Size(213, 29);
+            lblName.Size = new System.Drawing.Size(269, 29);
             lblName.TabIndex = 3;
-            lblName.Text = "Name of Petitioner";
+            lblName.Text = "Name of Petitioner/Filer";
             // 
             // dtpDateFiled
             // 
@@ -331,28 +353,6 @@
             txtType.Name = "txtType";
             txtType.Size = new System.Drawing.Size(404, 35);
             txtType.TabIndex = 4;
-            // 
-            // lblRefresh
-            // 
-            lblRefresh.AutoSize = true;
-            lblRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblRefresh.Location = new System.Drawing.Point(628, 7);
-            lblRefresh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            lblRefresh.Name = "lblRefresh";
-            lblRefresh.Size = new System.Drawing.Size(60, 18);
-            lblRefresh.TabIndex = 2;
-            lblRefresh.Text = "Refresh";
-            // 
-            // lblSearch2
-            // 
-            lblSearch2.AutoSize = true;
-            lblSearch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblSearch2.Location = new System.Drawing.Point(565, 7);
-            lblSearch2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            lblSearch2.Name = "lblSearch2";
-            lblSearch2.Size = new System.Drawing.Size(55, 18);
-            lblSearch2.TabIndex = 2;
-            lblSearch2.Text = "Search";
             // 
             // Main
             // 

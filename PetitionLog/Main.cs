@@ -23,6 +23,12 @@ namespace PetitionLog
             gridView.DataSource = null;
             gridView.DataSource = Storage.Load();
             DeleteBtn();
+            EditBtn();
+            if (gridView.Columns.Contains("btnEdit"))
+                gridView.Columns["btnEdit"].DisplayIndex = gridView.Columns.Count - 1;
+            if (gridView.Columns.Contains("btnDelete"))
+                gridView.Columns["btnDelete"].DisplayIndex = gridView.Columns.Count - 1;
+
             GridFormat.Format(gridView);
 
             gridView.AllowUserToAddRows = false;
@@ -123,6 +129,19 @@ namespace PetitionLog
             }
         }
 
+        private void EditBtn()
+        {
+            if (!gridView.Columns.Contains("btnEdit"))
+            {
+                DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
+                editButton.HeaderText = "Edit";
+                editButton.Text = "Edit";
+                editButton.UseColumnTextForButtonValue = true;
+                editButton.Name = "btnEdit";
+                gridView.Columns.Add(editButton);
+            }
+        }
+
         private void GridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
@@ -130,18 +149,34 @@ namespace PetitionLog
 
             gridView.EndEdit();
 
-            if (gridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            var petitions = (SortableBindingList<Petition>)gridView.DataSource;
+
+            if (gridView.Columns[e.ColumnIndex].Name == "btnDelete")
             {
-                var petitions = (SortableBindingList<Petition>)gridView.DataSource;
                 var petitionToRemove = petitions[e.RowIndex];
 
-                var confirm = MessageBox.Show($"Are you sure you want to delete the petition from {petitionToRemove.Name}?",
+                var confirm = MessageBox.Show(
+                    $"Are you sure you want to delete the petition from {petitionToRemove.Name}?",
                     "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (confirm == DialogResult.Yes)
                 {
                     petitions.RemoveAt(e.RowIndex);
                     Storage.Save(petitions);
+                }
+            }
+
+            else if (gridView.Columns[e.ColumnIndex].Name == "btnEdit")
+            {
+                var petitionToEdit = petitions[e.RowIndex];
+
+                using (var editForm = new EditForm(petitionToEdit))
+                {
+                    if (editForm.ShowDialog() == DialogResult.OK)
+                    {
+                        Storage.Save(petitions); // Save updated list
+                        LoadEntries();           // Refresh table
+                    }
                 }
             }
         }
