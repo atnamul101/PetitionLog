@@ -26,15 +26,32 @@ namespace PetitionLog
             txtCCE.Text = petition.CCE;
             dtpDateFiled.Value = petition.DateFiled;
             txtRemarks.Text = petition.Remarks;
+
+            this.AcceptButton = btnSave;   // Enter triggers Save
+            this.CancelButton = btnCancel; // Esc triggers Cancel
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            PetitionData.Name = txtName.Text;
-            PetitionData.Type = txtType.Text;
-            PetitionData.CCE = txtCCE.Text;
+            bool changed =  PetitionData.Name != txtName.Text ||
+                            PetitionData.Type != txtType.Text ||
+                            PetitionData.CCE != txtCCE.Text ||
+                            PetitionData.DateFiled != dtpDateFiled.Value ||
+                            PetitionData.Remarks != txtRemarks.Text;
+
+            if (!changed)
+            {
+                // Nothing changed, treat as cancel
+                DialogResult = DialogResult.Cancel;
+                Close();
+                return;
+            }
+
+            PetitionData.Name = txtName.Text.ToUpperInvariant();
+            PetitionData.Type = txtType.Text.ToUpperInvariant();
+            PetitionData.CCE = txtCCE.Text.ToUpperInvariant();
             PetitionData.DateFiled = dtpDateFiled.Value;
-            PetitionData.Remarks = txtRemarks.Text;
+            PetitionData.Remarks = txtRemarks.Text.ToUpperInvariant();
 
             DialogResult = DialogResult.OK;
             Close();

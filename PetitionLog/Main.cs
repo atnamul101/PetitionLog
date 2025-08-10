@@ -58,8 +58,23 @@ namespace PetitionLog
             }
         }
 
+        private bool ValidateAddInputs()
+        {
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Please enter the petitioner's name.", "Missing Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
+                return false;
+            }
+            // Add more validation as needed (e.g., for txtType, txtCCE, etc.)
+            return true;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (!ValidateAddInputs())
+                return;
+
             var petitions = Storage.Load();
 
             if (string.IsNullOrWhiteSpace(txtName.Text))
@@ -70,11 +85,11 @@ namespace PetitionLog
 
             Petition newPetition = new Petition
             {
-                Name = txtName.Text,
-                Type = txtType.Text,
-                CCE = txtCCE.Text,
+                Name = txtName.Text.ToUpperInvariant(),
+                Type = txtType.Text.ToUpperInvariant(),
+                CCE = txtCCE.Text.ToUpperInvariant(),
                 DateFiled = dtpDateFiled.Value,
-                Remarks = txtRemarks.Text,
+                Remarks = txtRemarks.Text.ToUpperInvariant(),
                 DateAdded = DateTime.Now,
             };
 
@@ -93,20 +108,19 @@ namespace PetitionLog
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var petitions = Storage.Load();
-            string keyword = txtSearch.Text.ToLower();
-            string filterBy = cmbFilter.SelectedItem?.ToString() ?? "All";
+            string keyword = txtSearch.Text.Trim();
+            if (string.IsNullOrEmpty(keyword))
+                return;
 
-            var filtered = petitions.Where(p =>
-                string.IsNullOrWhiteSpace(keyword) || filterBy == "All" ||
-                (filterBy == "Name" && p.Name.ToLower().Contains(keyword)) ||
-                (filterBy == "Type" && p.Type.ToLower().Contains(keyword)) ||
-                (filterBy == "CCE" && p.CCE.ToLower().Contains(keyword)) ||
-                (filterBy == "Remarks" && p.Remarks.ToLower().Contains(keyword)) ||
-                (filterBy == "All" && ( p.Name.ToLower().Contains(keyword) || p.Type.ToLower().Contains(keyword) || p.CCE.ToLower().Contains(keyword) || p.Remarks.ToLower().Contains(keyword)))).ToList();
+            var petitions = Storage.Load();
+            var searchWords = keyword.ToLower().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var filtered = petitions.Where(p => p.Name != null && searchWords.All(word => p.Name.ToLower().Contains(word))).ToList();
 
             gridView.DataSource = null;
             gridView.DataSource = filtered;
+
+            GridFormat.Format(gridView);
 
             DeleteBtn();
             EditBtn();
@@ -119,10 +133,26 @@ namespace PetitionLog
                 gridView.Columns["DateAdded"].Visible = false;
         }
 
+        private void lblSearch_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            LoadEntries();
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!string.IsNullOrWhiteSpace(txtSearch.Text))
+                    btnSearch.PerformClick();
+                e.Handled = true;
+                e.SuppressKeyPress = true; // Prevents ding sound
+            }
+        }
+
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             txtSearch.Clear();
-            cmbFilter.SelectedIndex = 0;
             LoadEntries();
         }
 
@@ -191,26 +221,30 @@ namespace PetitionLog
             }
         }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabAdd)
+                this.AcceptButton = btnAdd;
+            else
+                this.AcceptButton = null;
+        }
+
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabAdd && e.KeyCode == Keys.Escape)
+            {
+                tabControl1.SelectedTab = tabView;
+                e.Handled = true;
+            }
+        }
+
         private void Main_Load(object sender, EventArgs e)
         {
             LoadEntries();
-            cmbFilter.SelectedIndex = 0;
             gridView.CellContentClick += GridView_CellContentClick;
             gridView.EditMode = DataGridViewEditMode.EditProgrammatically;
 
         }
 
-        private void btnPurge_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show(
-        "Are you sure you want to purge all entries older than 32 days?",
-        "Confirm Purge", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                Storage.Purge(32);
-                LoadEntries();
-            }
-        }
     }
 }

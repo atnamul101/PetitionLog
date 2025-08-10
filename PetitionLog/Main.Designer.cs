@@ -33,11 +33,8 @@
             btnAdd = new System.Windows.Forms.Button();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabView = new System.Windows.Forms.TabPage();
-            lblPurge = new System.Windows.Forms.Label();
-            btnPurge = new System.Windows.Forms.Button();
             btnRefresh = new System.Windows.Forms.Button();
             btnSearch = new System.Windows.Forms.Button();
-            cmbFilter = new System.Windows.Forms.ComboBox();
             lblSearch2 = new System.Windows.Forms.Label();
             lblRefresh = new System.Windows.Forms.Label();
             lblSearch = new System.Windows.Forms.Label();
@@ -100,11 +97,8 @@
             // 
             // tabView
             // 
-            tabView.Controls.Add(lblPurge);
-            tabView.Controls.Add(btnPurge);
             tabView.Controls.Add(btnRefresh);
             tabView.Controls.Add(btnSearch);
-            tabView.Controls.Add(cmbFilter);
             tabView.Controls.Add(lblSearch2);
             tabView.Controls.Add(lblRefresh);
             tabView.Controls.Add(lblSearch);
@@ -119,36 +113,11 @@
             tabView.Text = "View";
             tabView.UseVisualStyleBackColor = true;
             // 
-            // lblPurge
-            // 
-            lblPurge.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            lblPurge.AutoSize = true;
-            lblPurge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblPurge.Location = new System.Drawing.Point(1396, 63);
-            lblPurge.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            lblPurge.Name = "lblPurge";
-            lblPurge.Size = new System.Drawing.Size(51, 20);
-            lblPurge.TabIndex = 6;
-            lblPurge.Text = "Purge";
-            // 
-            // btnPurge
-            // 
-            btnPurge.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnPurge.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnPurge.BackgroundImage");
-            btnPurge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            btnPurge.Location = new System.Drawing.Point(1398, 7);
-            btnPurge.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnPurge.Name = "btnPurge";
-            btnPurge.Size = new System.Drawing.Size(58, 54);
-            btnPurge.TabIndex = 5;
-            btnPurge.UseVisualStyleBackColor = true;
-            btnPurge.Click += btnPurge_Click;
-            // 
             // btnRefresh
             // 
             btnRefresh.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnRefresh.BackgroundImage");
             btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            btnRefresh.Location = new System.Drawing.Point(628, 28);
+            btnRefresh.Location = new System.Drawing.Point(380, 24);
             btnRefresh.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new System.Drawing.Size(58, 54);
@@ -162,7 +131,7 @@
             btnSearch.BackgroundImage = (System.Drawing.Image)resources.GetObject("btnSearch.BackgroundImage");
             btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnSearch.ForeColor = System.Drawing.SystemColors.ControlText;
-            btnSearch.Location = new System.Drawing.Point(562, 28);
+            btnSearch.Location = new System.Drawing.Point(314, 24);
             btnSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new System.Drawing.Size(58, 54);
@@ -170,21 +139,11 @@
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
-            // cmbFilter
-            // 
-            cmbFilter.FormattingEnabled = true;
-            cmbFilter.Items.AddRange(new object[] { "All", "Name", "Type", "CCE", "Remarks" });
-            cmbFilter.Location = new System.Drawing.Point(328, 40);
-            cmbFilter.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            cmbFilter.Name = "cmbFilter";
-            cmbFilter.Size = new System.Drawing.Size(213, 37);
-            cmbFilter.TabIndex = 3;
-            // 
             // lblSearch2
             // 
             lblSearch2.AutoSize = true;
             lblSearch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblSearch2.Location = new System.Drawing.Point(565, 7);
+            lblSearch2.Location = new System.Drawing.Point(317, 3);
             lblSearch2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblSearch2.Name = "lblSearch2";
             lblSearch2.Size = new System.Drawing.Size(55, 18);
@@ -195,7 +154,7 @@
             // 
             lblRefresh.AutoSize = true;
             lblRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblRefresh.Location = new System.Drawing.Point(628, 7);
+            lblRefresh.Location = new System.Drawing.Point(380, 3);
             lblRefresh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblRefresh.Name = "lblRefresh";
             lblRefresh.Size = new System.Drawing.Size(60, 18);
@@ -208,9 +167,10 @@
             lblSearch.Location = new System.Drawing.Point(7, 6);
             lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new System.Drawing.Size(89, 29);
+            lblSearch.Size = new System.Drawing.Size(160, 29);
             lblSearch.TabIndex = 2;
-            lblSearch.Text = "Search";
+            lblSearch.Text = "Search Name";
+            lblSearch.Click += lblSearch_Click;
             // 
             // txtSearch
             // 
@@ -219,6 +179,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new System.Drawing.Size(299, 35);
             txtSearch.TabIndex = 1;
+            txtSearch.KeyDown += txtSearch_KeyDown;
             // 
             // tabAdd
             // 
@@ -367,6 +328,9 @@
             Load += Main_Load;
             ((System.ComponentModel.ISupportInitialize)gridView).EndInit();
             tabControl1.ResumeLayout(false);
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            this.KeyPreview = true; // Needed to capture key events at the form level
+            this.KeyDown += Main_KeyDown;
             tabView.ResumeLayout(false);
             tabView.PerformLayout();
             tabAdd.ResumeLayout(false);
@@ -394,12 +358,9 @@
         private System.Windows.Forms.TextBox txtRemarks;
         private System.Windows.Forms.Label lblRemarks;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnPurge;
-        private System.Windows.Forms.Label lblPurge;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblSearch2;
         private System.Windows.Forms.Label lblRefresh;
