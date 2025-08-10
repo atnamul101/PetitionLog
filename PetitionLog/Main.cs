@@ -20,14 +20,13 @@ namespace PetitionLog
 
         private void LoadEntries()
         {
+            if (gridView.Columns.Contains("btnEdit"))
+                gridView.Columns.Remove("btnEdit");
+            if (gridView.Columns.Contains("btnDelete"))
+                gridView.Columns.Remove("btnDelete");
+
             gridView.DataSource = null;
             gridView.DataSource = Storage.Load();
-            DeleteBtn();
-            EditBtn();
-            if (gridView.Columns.Contains("btnEdit"))
-                gridView.Columns["btnEdit"].DisplayIndex = gridView.Columns.Count - 1;
-            if (gridView.Columns.Contains("btnDelete"))
-                gridView.Columns["btnDelete"].DisplayIndex = gridView.Columns.Count - 1;
 
             GridFormat.Format(gridView);
 
@@ -36,6 +35,7 @@ namespace PetitionLog
             if (gridView.Columns.Contains("DateAdded"))
             {
                 gridView.Sort(gridView.Columns["DateAdded"], ListSortDirection.Descending);
+                gridView.Columns["DateAdded"].Visible = false;      // hide column but still sort
             }
 
             //highlight
@@ -107,6 +107,16 @@ namespace PetitionLog
 
             gridView.DataSource = null;
             gridView.DataSource = filtered;
+
+            DeleteBtn();
+            EditBtn();
+            if (gridView.Columns.Contains("btnEdit"))
+                gridView.Columns["btnEdit"].DisplayIndex = gridView.Columns.Count - 1;
+            if (gridView.Columns.Contains("btnDelete"))
+                gridView.Columns["btnDelete"].DisplayIndex = gridView.Columns.Count - 1;
+
+            if (gridView.Columns.Contains("DateAdded"))
+                gridView.Columns["DateAdded"].Visible = false;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -121,7 +131,7 @@ namespace PetitionLog
             if (!gridView.Columns.Contains("btnDelete"))
             {
                 DataGridViewButtonColumn deleteButton = new DataGridViewButtonColumn();
-                deleteButton.HeaderText = "Action";
+                deleteButton.HeaderText = "";
                 deleteButton.Text = "Delete";
                 deleteButton.Name = "btnDelete";
                 deleteButton.UseColumnTextForButtonValue = true;
@@ -134,7 +144,7 @@ namespace PetitionLog
             if (!gridView.Columns.Contains("btnEdit"))
             {
                 DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
-                editButton.HeaderText = "Edit";
+                editButton.HeaderText = "";
                 editButton.Text = "Edit";
                 editButton.UseColumnTextForButtonValue = true;
                 editButton.Name = "btnEdit";

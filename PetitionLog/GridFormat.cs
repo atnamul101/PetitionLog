@@ -24,7 +24,6 @@ namespace PetitionLog
             dgv.Columns["Remarks"].FillWeight = 200;
             dgv.Columns["Name"].FillWeight = 150;
             dgv.Columns["Type"].FillWeight = 80;
-            dgv.Columns["btnDelete"].FillWeight = 60;
 
             // Rename headers
             if (dgv.Columns.Contains("Name")) dgv.Columns["Name"].HeaderText = "Name of Petitioner/Filer";
