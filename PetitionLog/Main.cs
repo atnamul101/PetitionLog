@@ -25,37 +25,21 @@ namespace PetitionLog
             if (gridView.Columns.Contains("btnDelete"))
                 gridView.Columns.Remove("btnDelete");
 
+            var data = Storage.Load();
             gridView.DataSource = null;
-            gridView.DataSource = Storage.Load();
+            var sortedList = data.OrderByDescending(p => p.DateUpdated ?? p.DateAdded).ToList();
+            var sorted = new SortableBindingList<Petition>();
+            foreach (var petition in sortedList)
+            {
+                sorted.Add(petition);
+            }
 
+
+            gridView.DataSource = null;
+            gridView.DataSource = sorted;
             GridFormat.Format(gridView);
 
             gridView.AllowUserToAddRows = false;
-
-            if (gridView.Columns.Contains("DateAdded"))
-            {
-                gridView.Sort(gridView.Columns["DateAdded"], ListSortDirection.Descending);
-                gridView.Columns["DateAdded"].Visible = false;      // hide column but still sort
-            }
-
-            //highlight
-            foreach (DataGridViewRow row in gridView.Rows)
-            {
-                if (row.Cells["DateAdded"].Value is DateTime dateAdded)
-                {
-                    TimeSpan age = DateTime.Now - dateAdded;
-
-                    if (age.TotalDays >= 32)
-                    {
-                        row.DefaultCellStyle.BackColor = Color.LightCoral; // red
-                    }
-                    else if (age.TotalDays >= 21)
-                    {
-                        row.DefaultCellStyle.BackColor = Color.Khaki; // yellow
-                    }
-                    // else do nothing (default)
-                }
-            }
         }
 
         private bool ValidateAddInputs()
@@ -91,6 +75,7 @@ namespace PetitionLog
                 DateFiled = dtpDateFiled.Value,
                 Remarks = txtRemarks.Text.ToUpperInvariant(),
                 DateAdded = DateTime.Now,
+                DateUpdated = null
             };
 
             petitions.Add(newPetition);
@@ -118,8 +103,12 @@ namespace PetitionLog
             var filtered = petitions.Where(p => p.Name != null && searchWords.All(word => p.Name.ToLower().Contains(word))).ToList();
 
             gridView.DataSource = null;
-            gridView.DataSource = filtered;
-
+            var sortableFiltered = new SortableBindingList<Petition>();
+            foreach (var petition in filtered)
+            {
+                sortableFiltered.Add(petition);
+            }
+            gridView.DataSource = sortableFiltered;
             GridFormat.Format(gridView);
 
             DeleteBtn();
@@ -189,11 +178,11 @@ namespace PetitionLog
 
             gridView.EndEdit();
 
-            var petitions = (SortableBindingList<Petition>)gridView.DataSource;
+            var displayedPetitions = (SortableBindingList<Petition>)gridView.DataSource;
 
             if (gridView.Columns[e.ColumnIndex].Name == "btnDelete")
             {
-                var petitionToRemove = petitions[e.RowIndex];
+                var petitionToRemove = displayedPetitions[e.RowIndex];
 
                 var confirm = MessageBox.Show(
                     $"Are you sure you want to delete the petition from {petitionToRemove.Name}?",
@@ -201,21 +190,50 @@ namespace PetitionLog
 
                 if (confirm == DialogResult.Yes)
                 {
-                    petitions.RemoveAt(e.RowIndex);
-                    Storage.Save(petitions);
+                    // Load all petitions, remove the one to delete
+                    var allPetitions = Storage.Load();
+                    var petitionToDelete = allPetitions.FirstOrDefault(p => 
+                        p.Name == petitionToRemove.Name && 
+                        p.DateAdded == petitionToRemove.DateAdded);
+                    
+                    if (petitionToDelete != null)
+                    {
+                        allPetitions.Remove(petitionToDelete);
+                        Storage.Save(allPetitions);
+                    }
+                    
+                    displayedPetitions.RemoveAt(e.RowIndex);
+
+                    LoadEntries();
                 }
             }
-
             else if (gridView.Columns[e.ColumnIndex].Name == "btnEdit")
             {
-                var petitionToEdit = petitions[e.RowIndex];
+                var petitionToEdit = displayedPetitions[e.RowIndex];
 
                 using (var editForm = new EditForm(petitionToEdit))
                 {
                     if (editForm.ShowDialog() == DialogResult.OK)
                     {
-                        Storage.Save(petitions); // Save updated list
-                        LoadEntries();           // Refresh table
+                        // Load all petitions, update the edited one
+                        var allPetitions = Storage.Load();
+                        var existingPetition = allPetitions.FirstOrDefault(p =>
+                            p.DateAdded == petitionToEdit.DateAdded);
+                        
+                        if (existingPetition != null)
+                        {
+                            // Update the properties
+                            existingPetition.Name = petitionToEdit.Name;
+                            existingPetition.Type = petitionToEdit.Type;
+                            existingPetition.CCE = petitionToEdit.CCE;
+                            existingPetition.DateFiled = petitionToEdit.DateFiled;
+                            existingPetition.Remarks = petitionToEdit.Remarks;
+                            existingPetition.DateUpdated = petitionToEdit.DateUpdated;
+                        
+                            Storage.Save(allPetitions);
+                        }
+                        
+                        LoadEntries(); // Refresh table
                     }
                 }
             }

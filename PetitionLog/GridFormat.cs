@@ -25,6 +25,11 @@ namespace PetitionLog
             dgv.Columns["Name"].FillWeight = 150;
             dgv.Columns["Type"].FillWeight = 80;
 
+            if (dgv.Columns.Contains("DateAdded"))
+                dgv.Columns["DateAdded"].Visible = false;
+            if (dgv.Columns.Contains("DateUpdated"))
+                dgv.Columns["DateUpdated"].Visible = false;
+
             // Rename headers
             if (dgv.Columns.Contains("Name")) dgv.Columns["Name"].HeaderText = "Name of Petitioner/Filer";
             if (dgv.Columns.Contains("Type")) dgv.Columns["Type"].HeaderText = "Petition Type";

@@ -52,6 +52,7 @@ namespace PetitionLog
             PetitionData.CCE = txtCCE.Text.ToUpperInvariant();
             PetitionData.DateFiled = dtpDateFiled.Value;
             PetitionData.Remarks = txtRemarks.Text.ToUpperInvariant();
+            PetitionData.DateUpdated = DateTime.Now; // Set/update on edit
 
             DialogResult = DialogResult.OK;
             Close();

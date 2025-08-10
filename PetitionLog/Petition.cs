@@ -14,5 +14,6 @@ namespace PetitionLog
         public DateTime DateFiled { get; set; }
         public string Remarks { get; set; }
         public DateTime DateAdded { get; set; }
+        public DateTime? DateUpdated { get; set; } // Nullable for legacy data
     }
 }
